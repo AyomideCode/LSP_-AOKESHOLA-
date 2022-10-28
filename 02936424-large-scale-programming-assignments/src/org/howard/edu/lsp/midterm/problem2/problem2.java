@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.howard.edu.lsp.midterm;
+package org.howard.edu.lsp.midterm.problem2;
 
 /**
  * @author thebe
