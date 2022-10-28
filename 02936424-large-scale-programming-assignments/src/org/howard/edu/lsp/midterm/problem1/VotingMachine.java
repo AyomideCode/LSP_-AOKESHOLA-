@@ -24,29 +24,34 @@ In summary, you are responsible for the following:
 
 public class VotingMachine {
 	// YOU must decide upon an appropriate data representation to associate a name with respective votes.  Create whatever you like.
-	HashMap<String, Integer> votingdict = new HashMap<String, Integer>();	
+	HashMap<String, Integer> voting = new HashMap<String, Integer>();	
 	
 	public void addCandidate(String name) {
 		// Add a candidate to the list, initialize number of votes to 0
-		votingdict.put(name, 0);
+		voting.put(name, 0);
 	} 
 
 	public void castVotes(String name, int votes) {
 		// Cast votes to the candidate with the given name
-		votingdict.put(name, votes);
+		voting.put(name, votes);
 	}
 
 	public int getVotes(String name)  throws UnknownCandidateException {
 		// Return the number of votes for a given candidate.  Throws
 // UnknownCandidateException if name not present.  Make this a 
 // checked exception.
-		return (int) votingdict.get(name);
+		if (voting.containsKey(name)) {
+			return (int) voting.get(name);
+		}
+		else {
+			throw new UnknownCandidateException("Name is not present in the list.");
+		}
 	}
 
 	public int sum() {
 		// Return the total number of votes for all candidates.	
 		 int sum = 0;
-	        for (int f: votingdict.values()) {
+	        for (int f: voting.values()) {
 	            sum += f;
 	        }
 		return sum;
